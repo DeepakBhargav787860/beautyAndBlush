@@ -1,49 +1,143 @@
-import { Container, Group, Burger, Drawer, Stack, Anchor, MediaQuery } from '@mantine/core';
+import {
+  Container,
+  Group,
+  Burger,
+  Drawer,
+  Stack,
+  Button,
+  Anchor,
+  rem,
+  Box,
+} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import { IconScissors } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 
 const links = [
   { label: 'Home', to: '/' },
+  { label: 'About', to: '/about' },
   { label: 'Services', to: '/services' },
-  { label: 'About Us', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ];
 
-export default function Navbar() {
-  const [opened, { toggle }] = useDisclosure(false);
+export default function HeaderNavbar() {
+  const [opened, { toggle, close }] = useDisclosure(false);
 
   return (
-    <Container fluid px="md" py="md" style={{ borderBottom: '1px solid #ccc' }}>
-      <Group position="apart">
-        <h1 style={{ fontFamily: 'cursive', color: '#cc3366' }}>Glamify Parlor</h1>
+    <Box
+      component="header"
+      sx={{
+        borderBottom: '1px solid #eee',
+        backgroundColor: '#fff',
+        position: 'sticky',
+        top: 0,
+        zIndex: 1000,
+      }}
+    >
+      <Container
+        size="lg"
+        py="md"
+        style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+      >
+        {/* Logo */}
+        <Group>
+          <IconScissors size={28} stroke={2} color="#e91e63" />
+          <strong style={{ fontSize: rem(20), color: '#e91e63' }}>Beauty Parlor</strong>
+        </Group>
 
-        {/* Desktop links */}
-        <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-          <Group spacing="xl">
-            {links.map((link) => (
-              <Anchor component={Link} to={link.to} key={link.label}>
-                {link.label}
-              </Anchor>
-            ))}
-          </Group>
-        </MediaQuery>
+        {/* Desktop Menu */}
+        <Group spacing="xl" className="desktop-menu">
+          {links.map((link) => (
+            <Anchor
+              key={link.label}
+              component={Link}
+              to={link.to}
+              style={{
+                fontWeight: 500,
+                fontSize: rem(16),
+                color: '#333',
+                textDecoration: 'none',
+              }}
+            >
+              {link.label}
+            </Anchor>
+          ))}
+          <Button
+            variant="gradient"
+            gradient={{ from: 'pink', to: 'red' }}
+            radius="xl"
+            component={Link}
+            to="/parlour"
+          >
+            Parlour
+          </Button>
+        </Group>
 
-        {/* Burger button for mobile */}
-        <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+        {/* Mobile Burger */}
+        <Box className="mobile-menu">
           <Burger opened={opened} onClick={toggle} />
-        </MediaQuery>
+        </Box>
 
-        {/* Mobile Drawer Menu */}
-        <Drawer opened={opened} onClose={toggle} title="Menu" size="xs" padding="md">
-          <Stack>
+        {/* Mobile Drawer */}
+        <Drawer
+          opened={opened}
+          onClose={close}
+          title="Menu"
+          padding="md"
+          size="75%"
+          className="mobile-menu"
+          styles={{
+            body: {
+              marginTop: rem(20), // Adds spacing so nothing is hidden
+            },
+          }}
+        >
+          <Stack spacing="md" mt="sm">
             {links.map((link) => (
-              <Anchor component={Link} to={link.to} key={link.label} onClick={toggle}>
+              <Anchor
+                key={link.label}
+                component={Link}
+                to={link.to}
+                onClick={close}
+                style={{
+                  fontSize: rem(18),
+                  fontWeight: 500,
+                  color: '#333',
+                  textDecoration: 'none',
+                }}
+              >
                 {link.label}
               </Anchor>
             ))}
+            <Button
+              variant="gradient"
+              gradient={{ from: 'pink', to: 'red' }}
+              radius="xl"
+              component={Link}
+              to="/parlour"
+              onClick={close}
+            >
+              Parlour
+            </Button>
           </Stack>
         </Drawer>
-      </Group>
-    </Container>
+      </Container>
+
+      {/* Responsive CSS */}
+      <style>
+        {`
+          @media (max-width: 768px) {
+            .desktop-menu {
+              display: none !important;
+            }
+          }
+          @media (min-width: 768px) {
+            .mobile-menu {
+              display: none !important;
+            }
+          }
+        `}
+      </style>
+    </Box>
   );
 }

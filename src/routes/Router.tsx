@@ -1,27 +1,25 @@
-import About from "@/components/about";
-import BeautyAndBlush from "@/components/beautyAndBlush";
-import Contact from "@/components/contact";
+import HeaderNavbar from "@/components/navbar";
+import BeautyAndBlush from "@/components/navbar";
 
-import Services from "@/components/service";
 import { createBrowserRouter } from "react-router-dom";
 
 const Router = createBrowserRouter([
   {
     path: "/",
-    element: <BeautyAndBlush />,
+    element: <HeaderNavbar />,
   },
-  {
-    path: "/services",
-    element: <Services />,
-  },
-  {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
-  },
+  // {
+  //   path: "/services",
+  //   element: <Services />,
+  // },
+  // {
+  //   path: "/about",
+  //   element: <About />,
+  // },
+  // {
+  //   path: "/contact",
+  //   element: <Contact />,
+  // },
 ]);
 
 export default Router;
