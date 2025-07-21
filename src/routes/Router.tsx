@@ -1,6 +1,6 @@
 import HeaderNavbar from "@/components/navbar";
 import BeautyAndBlush from "@/components/navbar";
-
+//edfgh
 import { createBrowserRouter } from "react-router-dom";
 
 const Router = createBrowserRouter([
