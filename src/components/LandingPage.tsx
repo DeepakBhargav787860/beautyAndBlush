@@ -23,6 +23,16 @@ import { DateInput,TimeInput  } from '@mantine/dates';
 import Header from './navbar';
 import Autoplay from 'embla-carousel-autoplay';
 import { IconBrandFacebook, IconBrandInstagram, IconBrandTwitter } from '@tabler/icons-react';
+import sliderImage1 from '../assets/images/slider1.jpg';
+import sliderImage2 from '../assets/images/ec00bfd5416c5c0fe76fc10ed95e9b2c.jpg';
+import sliderImage3 from '../assets/images/facial.jpeg';
+import spaImage1 from '../assets/images/ec00bfd5416c5c0fe76fc10ed95e9b2c.jpg';
+import spaImage2 from '../assets/images/another-image.jpg'; // replace with actual file
+import galleryImage1 from '../assets/images/gallery3.jpg';
+import galleryImage2 from '../assets/images/gallery3.jpg';
+import galleryImage3 from '../assets/images/gallery3.jpg';
+import testimonialPhoto1 from '../assets/images/testimonial1.jpg';
+import testimonialPhoto2 from '../assets/images/testimonial2.jpg';
 
 const MotionTitle = motion(Title);
 //const MotionBox = motion(Box);
@@ -32,17 +42,17 @@ const services = [
   {
     title: 'Facial Treatments',
     description: 'Revitalize your skin with deep cleansing, hydration and glow-enhancing facials.',
-    image: 'src/assets/images/facial.jpeg',
+    image: spaImage1,
   },
   {
     title: 'Hair Care',
     description: 'Relax your muscles and relieve stress with our professional body massage services.',
-    image: 'src/assets/images/hair.jpeg',
+    image: spaImage2,
   },
   {
     title: 'Manicure & Pedicure',
     description: 'Pamper your hands and feet with nail care and relaxing spa therapy.',
-    image: 'src/assets/images/manicure.avif',
+    image: spaImage1,
   },
 ];
 
@@ -50,32 +60,32 @@ const slides = [
   {
     title: 'Feel Natural, Be Natural',
     subtitle: 'Relax. Refresh. Recharge.',
-    image: 'src/assets/images/slider1.jpg',
+    image:sliderImage1
   },
   {
     title: 'Pamper Yourself Today',
     subtitle: 'Luxury Spa Treatments & Beauty Care',
-    image: 'src/assets/images/slider2.webp',
+    image:sliderImage2
   },
   {
     title: 'Feel Natural, Be Natural',
     subtitle: 'Relax. Refresh. Recharge.',
-    image: 'src/assets/images/slider3.avif',
+    image:sliderImage3
   },
   {
     title: 'Pamper Yourself Today',
     subtitle: 'Luxury Spa Treatments & Beauty Care',
-    image: 'src/assets/images/slider4.avif',
+    image:sliderImage1
   },
 
 ];
 
-const galleryImages = ['src/assets/images/slider4.avif', 'src/assets/images/slider4.avif','src/assets/images/slider4.avif','src/assets/images/slider4.avif','src/assets/images/slider4.avif','src/assets/images/slider4.avif', 'src/assets/images/slider4.avif'];
+const galleryImages = [galleryImage1, galleryImage2,galleryImage3,galleryImage1,galleryImage1,galleryImage1, galleryImage1];
 const testimonials = [
-  { name: 'Jane Doe', role: 'Artist', photo: 'src/assets/images/slider4.avif', feedback: 'Amazing experience!' },
-  { name: 'Jane Doe', role: 'Artist', photo: 'src/assets/images/slider4.avif', feedback: 'Amazing experience!' },
-  { name: 'Jane Doe', role: 'Artist', photo: 'src/assets/images/slider4.avif', feedback: 'Amazing experience!' },
-  { name: 'Jane Doe', role: 'Artist', photo: 'src/assets/images/slider4.avif', feedback: 'Amazing experience!' },
+  { name: 'Jane Doe', role: 'Artist', photo: galleryImage1, feedback: 'Amazing experience!' },
+  { name: 'Jane Doe', role: 'Artist', photo: galleryImage1, feedback: 'Amazing experience!' },
+  { name: 'Jane Doe', role: 'Artist', photo: galleryImage1, feedback: 'Amazing experience!' },
+  { name: 'Jane Doe', role: 'Artist', photo: galleryImage1, feedback: 'Amazing experience!' },
 
 ];
 
@@ -204,7 +214,7 @@ export const LandingPage = () => {
               >
                 <Image
                   radius="xl"
-                  src="src\assets\images\ec00bfd5416c5c0fe76fc10ed95e9b2c.jpg"
+                  src={sliderImage1}
                   alt="Spa image 1"
                   sx={{
                     width: '100%',
@@ -231,7 +241,7 @@ export const LandingPage = () => {
         >
           <Image
           radius="xl"
-            src="src\assets\images\ec00bfd5416c5c0fe76fc10ed95e9b2c.jpg"
+            src={sliderImage1}
             alt="Spa image 2"
             sx={{
               width: '100%',
