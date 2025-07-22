@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { forwardRef, useRef } from 'react';
 import {
   ActionIcon,
   Box,
@@ -18,17 +18,15 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
-import { motion } from 'framer-motion';
+import { MotionProps, motion } from 'framer-motion';
 import { DateInput,TimeInput  } from '@mantine/dates';
 import Header from './navbar';
 import Autoplay from 'embla-carousel-autoplay';
 import { IconBrandFacebook, IconBrandInstagram, IconBrandTwitter } from '@tabler/icons-react';
 
-
-const MotionBox = motion(Box);
 const MotionTitle = motion(Title);
-const MotionText = motion(Text);
-const MotionButton = motion(Button);
+//const MotionBox = motion(Box);
+
 
 const services = [
   {
@@ -130,7 +128,8 @@ export const LandingPage = () => {
                   color: 'white',
                 }}
               >
-                <MotionBox
+                <Box
+                component={motion.div}
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
@@ -144,7 +143,7 @@ export const LandingPage = () => {
                   <Button size="md" radius="xl" color="pink">
                     Make Appointment
                   </Button>
-                </MotionBox>
+                </Box>
               </Container>
             </Box>
           </Carousel.Slide>
@@ -171,28 +170,28 @@ export const LandingPage = () => {
             Welcome to BeautyBlush
           </MotionTitle>
 
-          <MotionText
+          <Text
             mt="md"
             size="lg"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            //initial={{ opacity: 0, y: 20 }}
+           // whileInView={{ opacity: 1, y: 0 }}
+           // transition={{ delay: 0.2, duration: 0.6 }}
             sx={{ color: '#6d4c41' }}
           >
             Experience luxury spa treatments that rejuvenate your body and soul. Let us bring out your natural glow with care and professionalism.
-          </MotionText>
+          </Text>
 
-          <MotionButton
+          <Button
             mt="xl"
             size="md"
             radius="xl"
             color="pink"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            // initial={{ opacity: 0, y: 20 }}
+            // whileInView={{ opacity: 1, y: 0 }}
+            // transition={{ delay: 0.4, duration: 0.6 }}
           >
             Explore Services
-          </MotionButton>
+          </Button>
         </Grid.Col>
 
         <Grid.Col span={6 }>
@@ -259,7 +258,8 @@ export const LandingPage = () => {
   }}
 >
   <Container size="lg">
-    <MotionBox
+    <Box
+    component={motion.div}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -280,7 +280,7 @@ export const LandingPage = () => {
       <Text size="lg" color="dimmed" mt="sm" sx={{ maxWidth: 600, mx: 'auto' }}>
         Indulge in premium treatments tailored to relax, rejuvenate, and enhance your natural beauty.
       </Text>
-    </MotionBox>
+    </Box>
 
     {/* Services Grid */}
     <Grid gutter="xl">
@@ -380,7 +380,8 @@ export const LandingPage = () => {
   }}
 >
   <Container size="lg">
-    <MotionBox
+    <Box
+    component={motion.div}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -398,7 +399,7 @@ export const LandingPage = () => {
       >
         Our Signature Services
       </Title>
-    </MotionBox>
+    </Box>
 
     {services.map((service, index) => (
   <Box
@@ -582,14 +583,14 @@ export const LandingPage = () => {
 </Box>
 <Box component="section" py={100} sx={{ backgroundColor: '#fffaf7' }}>
   <Container size="lg">
-    <MotionBox initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} mb="xl" ta="center">
+    <Box component={motion.div} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} mb="xl" ta="center">
       <Title order={2} sx={{ fontSize: rem(36), fontFamily: 'Cormorant Garamond, serif', fontWeight: 600, color: '#3e2d20' }}>
         Our Gallery
       </Title>
       <Text size="lg" color="dimmed" mt="sm">
         Explore moments of beauty and tranquility captured in our serene spa space.
       </Text>
-    </MotionBox>
+    </Box>
     
     <Grid gutter="sm">
       {galleryImages.map((img, idx) => (
