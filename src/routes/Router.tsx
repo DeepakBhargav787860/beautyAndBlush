@@ -1,25 +1,12 @@
-import HeaderNavbar from "@/components/navbar";
-import BeautyAndBlush from "@/components/navbar";
-//edfgh
+import LandingPage from "@/components/LandingPage";
+
 import { createBrowserRouter } from "react-router-dom";
 
 const Router = createBrowserRouter([
   {
     path: "/",
-    element: <HeaderNavbar />,
+    element: <LandingPage />,
   },
-  // {
-  //   path: "/services",
-  //   element: <Services />,
-  // },
-  // {
-  //   path: "/about",
-  //   element: <About />,
-  // },
-  // {
-  //   path: "/contact",
-  //   element: <Contact />,
-  // },
 ]);
 
 export default Router;
