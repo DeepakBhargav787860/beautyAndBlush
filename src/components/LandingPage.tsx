@@ -37,9 +37,9 @@ import service2 from "../../public/images/hair.jpeg";
 import service3 from "../../public/images/hair.jpeg";
 //slider
 import slider1 from "../../public/images/slider1.jpg";
-import slider2 from "../../public/images/slider1.jpg";
-import slider3 from "../../public/images/slider1.jpg";
-import slider4 from "../../public/images/slider1.jpg";
+import slider2 from "../../public/images/slider2.webp";
+import slider3 from "../../public/images/slider3.avif";
+import slider4 from "../../public/images/slider4.avif";
 //galery
 import galery1 from "../../public/images/ec00bfd5416c5c0fe76fc10ed95e9b2c.jpg";
 
@@ -257,7 +257,7 @@ export const LandingPage = () => {
                   >
                     <Image
                       radius="xl"
-                      src="src\assets\images\ec00bfd5416c5c0fe76fc10ed95e9b2c.jpg"
+                      src={galery1}
                       alt="Spa image 1"
                       sx={{
                         width: "100%",
@@ -284,7 +284,7 @@ export const LandingPage = () => {
                     >
                       <Image
                         radius="xl"
-                        src="src\assets\images\ec00bfd5416c5c0fe76fc10ed95e9b2c.jpg"
+                        src={galery1}
                         alt="Spa image 2"
                         sx={{
                           width: "100%",
