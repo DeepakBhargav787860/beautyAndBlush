@@ -600,14 +600,14 @@ export const LandingPage = () => {
                   Want to Make a Booking or Have a Question?
                 </Title>
                 <Text size="lg" color="dimmed" mb="lg">
-                  Call us :{" "}
+                  Call us :-{" "}
                   <Text
                     component="span"
                     weight={700}
                     color="pink"
                     sx={{ fontSize: rem(18) }}
                   >
-                    +12 9 8765 4321
+                    9667247698
                   </Text>{" "}
                   or fill out our online booking & enquiry form and we will
                   contact you.
@@ -908,7 +908,7 @@ export const LandingPage = () => {
                   href="tel:+1234567890"
                   style={{ color: "#333", fontWeight: 500 }}
                 >
-                  +1 (234) 567-890
+                  9667247698
                 </a>
               </Text>
               <Text size="sm" mb={8}>
@@ -917,7 +917,7 @@ export const LandingPage = () => {
                   href="mailto:info@spamagic.com"
                   style={{ color: "#333", fontWeight: 500 }}
                 >
-                  info@spamagic.com
+                  sobhasharma64@gmail.com
                 </a>
               </Text>
 
@@ -928,7 +928,7 @@ export const LandingPage = () => {
                     <ActionIcon
                       key={idx}
                       component="a"
-                      href="#"
+                      href={idx==1 ? "https://www.instagram.com/blush_beauty_698?utm_source=qr":"#"}
                       size="lg"
                       radius="xl"
                       variant="light"
