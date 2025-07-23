@@ -30,8 +30,7 @@ import {
 
 const MotionTitle = motion(Title);
 //const MotionBox = motion(Box);
-//logo
-import logo from "../../public/images/logo1.jpeg"
+
 //service
 import service1 from "../../public/images/facial.jpg";
 import service2 from "../../public/images/hair.jpeg";
@@ -98,7 +97,7 @@ const galleryImages = [
   galery1,
   galery1,
   galery1,
-  galery1,
+
 ];
 const testimonials = [
   {
@@ -134,78 +133,120 @@ export const LandingPage = () => {
   return (
     <>
       <Box sx={{ position: "relative", overflow: "hidden" }}>
-        <Header />
-        <Carousel
-          slideSize="100%"
-          height="100vh"
-          loop
-          withIndicators
-          controlsOffset="xs"
-          styles={{
-            indicator: {
-              backgroundColor: "white",
+  <Header />
+  <Carousel
+    slideSize="100%"
+    height="100vh"
+    loop
+    withIndicators
+    controlsOffset="xs"
+    styles={{
+      indicator: {
+        backgroundColor: "white",
+      },
+    }}
+  >
+    {slides.map((slide, idx) => (
+      <Carousel.Slide key={idx}>
+        <Box
+          sx={{
+            position: "relative",
+            height: "100vh",
+            backgroundImage: `url(${slide.image})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            // Prevent height issues on mobile browsers
+            "@media (max-height: 500px)": {
+              height: "auto",
+              minHeight: "500px",
             },
           }}
         >
-          {slides.map((slide, idx) => (
-            <Carousel.Slide key={idx}>
-              <Box
+          <Box
+            sx={{
+              position: "absolute",
+              inset: 0,
+              backgroundColor: "rgba(0, 0, 0, 0.4)",
+            }}
+          />
+          <Container
+            size="lg"
+            sx={{
+              position: "absolute",
+              top: "80%",
+              transform: "translateY(-50%)",
+              zIndex: 2,
+              color: "white",
+              textAlign: "center",
+              px: "md",
+
+              "@media (max-width: 768px)": {
+                top: "70%",
+              },
+              "@media (max-width: 480px)": {
+                top: "65%",
+              },
+            }}
+          >
+            <Box
+              component={motion.div}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <Title
+                order={1}
+                size="60px"
+                mb="sm"
                 sx={{
-                  position: "relative",
-                  height: "100vh",
-                  backgroundImage: `url(${slide.image})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  fontFamily: "Cormorant Garamond, serif",
+                  "@media (max-width: 768px)": {
+                    fontSize: "40px",
+                  },
+                  "@media (max-width: 480px)": {
+                    fontSize: "28px",
+                  },
                 }}
               >
-                <Box
-                  sx={{
-                    position: "absolute",
-                    inset: 0,
-                    backgroundColor: "rgba(0, 0, 0, 0.4)",
-                  }}
-                />
-                <Container
-                  size="lg"
-                  sx={{
-                    position: "absolute",
-                    top: "80%",
-                    transform: "translateY(-50%)",
-                    zIndex: 2,
-                    color: "white",
-                  }}
-                >
-                  <Box
-                    component={motion.div}
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                  >
-                    <Title
-                      order={1}
-                      size="60px"
-                      mb="md"
-                      sx={{ fontFamily: "Cormorant Garamond, serif" }}
-                    >
-                      {slide.title}
-                    </Title>
-                    <Text size="lg" mb="xl">
-                      {slide.subtitle}
-                    </Text>
-                    <Button size="md" radius="xl" color="pink">
-                      Make Appointment
-                    </Button>
-                  </Box>
-                </Container>
-              </Box>
-            </Carousel.Slide>
-          ))}
-        </Carousel>
-      </Box>
+                {slide.title}
+              </Title>
+              <Text
+                size="lg"
+                mb="xl"
+                sx={{
+                  "@media (max-width: 768px)": {
+                    fontSize: "16px",
+                  },
+                  "@media (max-width: 480px)": {
+                    fontSize: "14px",
+                  },
+                }}
+              >
+                {slide.subtitle}
+              </Text>
+              <Button
+                size="md"
+                radius="xl"
+                color="pink"
+                sx={{
+                  "@media (max-width: 480px)": {
+                    width: "100%",
+                  },
+                }}
+              >
+                Make Appointment
+              </Button>
+            </Box>
+          </Container>
+        </Box>
+      </Carousel.Slide>
+    ))}
+  </Carousel>
+</Box>
+
       <Box component="section" py={80} sx={{ backgroundColor: "#fffaf7" }}>
         <Container size="lg">
           <Grid align="center" gutter="xl">
-            {/* LEFT TEXT SIDE */}
             <Grid.Col span={6}>
               <MotionTitle
                 order={2}
@@ -225,9 +266,10 @@ export const LandingPage = () => {
               <Text
                 mt="md"
                 size="lg"
-                //initial={{ opacity: 0, y: 20 }}
-                // whileInView={{ opacity: 1, y: 0 }}
-                // transition={{ delay: 0.2, duration: 0.6 }}
+                component={motion.div}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
                 sx={{ color: "#6d4c41" }}
               >
                 Experience luxury spa treatments that rejuvenate your body and
@@ -240,9 +282,10 @@ export const LandingPage = () => {
                 size="md"
                 radius="xl"
                 color="pink"
-                // initial={{ opacity: 0, y: 20 }}
-                // whileInView={{ opacity: 1, y: 0 }}
-                // transition={{ delay: 0.4, duration: 0.6 }}
+                component={motion.div}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
               >
                 Explore Services
               </Button>
@@ -264,7 +307,7 @@ export const LandingPage = () => {
                         width: "100%",
                         aspectRatio: "3 / 4",
                         objectFit: "cover",
-                        borderRadius: rem(100), // capsule shape
+                        borderRadius: rem(100), 
                         boxShadow: "lg",
                       }}
                     />
@@ -279,7 +322,7 @@ export const LandingPage = () => {
                     <Box
                       sx={{
                         width: "100%",
-                        paddingTop: "30%", // makes a square box
+                        paddingTop: "30%", 
                         position: "relative",
                       }}
                     >
@@ -601,14 +644,14 @@ export const LandingPage = () => {
                   Want to Make a Booking or Have a Question?
                 </Title>
                 <Text size="lg" color="dimmed" mb="lg">
-                  Call us :-{" "}
+                  Call us :{" "}
                   <Text
                     component="span"
                     weight={700}
                     color="pink"
                     sx={{ fontSize: rem(18) }}
                   >
-                    9667247698
+                    +12 9 8765 4321
                   </Text>{" "}
                   or fill out our online booking & enquiry form and we will
                   contact you.
@@ -640,74 +683,115 @@ export const LandingPage = () => {
           </Grid>
         </Container>
       </Box>
-      <Box component="section" py={100} sx={{ backgroundColor: "#fffaf7" }}>
-        <Container size="lg">
-          <Box
-            component={motion.div}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            mb="xl"
-            ta="center"
-          >
-            <Title
-              order={2}
+      <Box component="section" py={100} sx={{ backgroundColor: "#f5f5f5" }}>
+  <Container size="lg">
+    {/* Section Heading */}
+    <Box
+      component={motion.div}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      mb="xl"
+      ta="center"
+    >
+      <Text
+        size="sm"
+        sx={{
+          letterSpacing: "2px",
+          textTransform: "uppercase",
+          color: "#ff6b6b",
+          fontWeight: 700,
+        }}
+      >
+        Our Works
+      </Text>
+      <Title
+        order={2}
+        sx={{
+          fontSize: rem(40),
+          fontWeight: 700,
+          color: "#2f2f2f",
+          mb: rem(10),
+        }}
+      >
+        Build Great Products
+      </Title>
+      <Box
+        sx={{
+          width: rem(50),
+          height: rem(4),
+          backgroundColor: "#ff6b6b",
+          borderRadius: rem(2),
+          mx: "auto",
+          my: rem(12),
+        }}
+      />
+    </Box>
+
+    <Box
+      sx={{
+        position: "relative",
+        padding: rem(8),
+      }}
+    >
+      <Box
+        sx={{
+          position: "absolute",
+          top: "28%",
+          left: -30,
+          right: 0,
+          width:"105%",
+          height: "45%",
+          backgroundColor: "#ff6b6b",
+          zIndex: 0,
+        }}
+      />
+
+      <Grid gutter="md" justify="center" sx={{ position: "relative", zIndex: 1 }}>
+        {galleryImages.map((img, idx) => (
+          <Grid.Col key={idx} xs={12} sm={6} md={4}>
+            <Box
               sx={{
-                fontSize: rem(36),
-                fontFamily: "Cormorant Garamond, serif",
-                fontWeight: 600,
-                color: "#3e2d20",
+                position: "relative",
+                overflow: "hidden",
+                borderRadius: rem(10),
+                backgroundColor: "#ffffff",
+                p: rem(4),
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                "&:hover": {
+                  transform: "translateY(-5px)",
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                },
               }}
             >
-              Our Gallery
-            </Title>
-            <Text size="lg" color="dimmed" mt="sm">
-              Explore moments of beauty and tranquility captured in our serene
-              spa space.
-            </Text>
-          </Box>
+              <Image
+                src={img}
+                alt={`Gallery ${idx + 1}`}
+                sx={{
+                  width: "100%",
+                  height: rem(220),
+                  objectFit: "cover",
+                  borderRadius: rem(6),
+                  transition: "transform 0.4s ease",
+                  "&:hover": { transform: "scale(1.05)" },
+                }}
+              />
+            </Box>
+          </Grid.Col>
+        ))}
+      </Grid>
+    </Box>
+  </Container>
+</Box>
 
-          <Grid gutter="sm">
-            {galleryImages.map((img, idx) => (
-              <Grid.Col key={idx} xs={12} sm={6} md={4}>
-                <motion.div
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                >
-                  <Box
-                    sx={{
-                      position: "relative",
-                      overflow: "hidden",
-                      borderRadius: rem(16),
-                      "&:hover img": { transform: "scale(1.1)" },
-                    }}
-                  >
-                    <Image
-                      src={img}
-                      alt={`Gallery ${idx + 1}`}
-                      sx={{
-                        width: "100%",
-                        height: rem(250),
-                        objectFit: "cover",
-                        transition: "transform 0.5s ease",
-                      }}
-                    />
-                  </Box>
-                </motion.div>
-              </Grid.Col>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
+
       <Box component="section" py={120} sx={{ backgroundColor: "#fff" }}>
         <Container size="lg" ta="center">
-          {/* Background Heading */}
           <Box sx={{ position: "relative", mb: 120 }}>
             <Text
               sx={{
                 position: "absolute",
-                top: "-40px", // move up slightly
+                top: "-40px", 
                 left: "50%",
                 transform: "translateX(-50%)",
                 fontSize: 80,
@@ -827,7 +911,7 @@ export const LandingPage = () => {
                 }}
               >
                 <Image
-                  src={logo}
+                  src="/logo.png"
                   alt="SpaMagic Logo"
                   width={140}
                   mb="md"
@@ -901,7 +985,7 @@ export const LandingPage = () => {
                 Contact Us
               </Title>
               <Text size="sm" mb={4}>
-               B-7 surya nagar, satguru maths point, nadi ka phatak benar road jhotwara jaipur rajsthan
+                123 Wellness Street, Beauty City
               </Text>
               <Text size="sm" mb={4}>
                 Phone:{" "}
@@ -909,7 +993,7 @@ export const LandingPage = () => {
                   href="tel:+1234567890"
                   style={{ color: "#333", fontWeight: 500 }}
                 >
-                  9667247698
+                  +1 (234) 567-890
                 </a>
               </Text>
               <Text size="sm" mb={8}>
@@ -918,7 +1002,7 @@ export const LandingPage = () => {
                   href="mailto:info@spamagic.com"
                   style={{ color: "#333", fontWeight: 500 }}
                 >
-                  sobhasharma64@gmail.com
+                  info@spamagic.com
                 </a>
               </Text>
 
@@ -929,7 +1013,7 @@ export const LandingPage = () => {
                     <ActionIcon
                       key={idx}
                       component="a"
-                      href={idx==1 ? "https://www.instagram.com/blush_beauty_698?utm_source=qr":"#"}
+                      href="#"
                       size="lg"
                       radius="xl"
                       variant="light"
