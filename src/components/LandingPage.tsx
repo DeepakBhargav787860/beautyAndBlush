@@ -30,7 +30,8 @@ import {
 
 const MotionTitle = motion(Title);
 //const MotionBox = motion(Box);
-
+//logo
+import logo from "../../public/images/logo1.jpeg"
 //service
 import service1 from "../../public/images/facial.jpg";
 import service2 from "../../public/images/hair.jpeg";
@@ -826,7 +827,7 @@ export const LandingPage = () => {
                 }}
               >
                 <Image
-                  src="/logo.png"
+                  src={logo}
                   alt="SpaMagic Logo"
                   width={140}
                   mb="md"
@@ -900,7 +901,7 @@ export const LandingPage = () => {
                 Contact Us
               </Title>
               <Text size="sm" mb={4}>
-                123 Wellness Street, Beauty City
+               B-7 surya nagar, satguru maths point, nadi ka phatak benar road jhotwara jaipur rajsthan
               </Text>
               <Text size="sm" mb={4}>
                 Phone:{" "}
